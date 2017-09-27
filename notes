@@ -1,0 +1,88 @@
+25/09 -> Continuação de Camada de Rede e Camada de Enlace 
+    
+    -> Roteamento Hierárquico
+        -> Internamente cada rede tem seus algoritmos de roteamento
+        -> Roteamento Intra AS (?)
+    -> Roteamento na Internet
+        -> BGP
+    -> Roteamento Broadcast e Multicast
+		-> Broadcast
+    		-> Entrega de pacote para vários hosts.
+			-> N-way-unicast é ineficiente
+		
+
+--------------------------------
+
+18/09 -> Continuação Camada de Rede
+	
+	-> Caracterizando os campos de um datagrama.
+		-> Falou uma parada de checksum que não entendi.
+		-> Fragmentação: as vezes a camada de enlace não consegue transportar todo o pacote que a camada de rede entrega para ela.
+		
+		
+-------------------------------------------------------------------------------------------
+
+11/09 -> CAMADA DE REDES
+
+	-> DEVER FUNDAMENTAL: Pegar IP's e garantir que saia de 'A' até 'B'.
+	-> Rede só opera de dois modos: Comutada a Pacotes e a Circuito.
+	-> Circuitos Virtuais
+		-> Rede recebe uma demanda. É criada uma rede de circuitos virtuais para atender essa demanda.
+		-> É caro.
+	-> Redes de Datagramas
+		-> Não se estabelece chamada antes. Pacotes não passam necessariamente pelos mesmo comutadores.
+		-> Basicamente os comutadores só usam o IP de destino para impulsionar o pacote (tabela de encaminhamento).
+		-> Os pacotes podem ir por diferentes comutadores, o que a principio pode gerar uma impressão de que vão chegar desordenados
+		   (um pode tomar um caminho melhor que o outro que saiu antes dele.)
+		-> Máscara
+			-> ?
+		-> As vezes a rede pode ficar indisponível. Os algoritmos de roteamento têm que se virar para fazer o pacote chegar no destino.
+	-> Arquitetura do roteador
+		-> Routing processor
+			-> Implementação com software.
+		-> Processamento de entrada
+			-> Faz a decisão (junto com o routing processor) pra qual porta de saída o pacote deve ir.
+			-> Também ocorre meio que um enfileramento, mas depois o pacote é mandado para a malha de comutação.		
+		-> Malha de comutação
+			-> comutação por memória
+				-> Essa malha de comutação copia para o seu banco a informação da entrada e joga para a saída.
+			-> comutação por barramento
+				-> 	
+			-> comutação por meio de rede de interconexão
+				-> possível enviar mais de um pacote por vez. Possível envios paralelos.
+		-> Processamento de saída
+			-> Se chega muito pacote (chega mais do que ele manda) ocorre o enfileramento e pode ocorrer o descarte de pacotes.
+			-> Também se chegar vários pacotes na entrada e são para a mesma saída, ocorre o enfileramento.
+				-Ex: as linhas transmitem a 1Mbps. O comutador de pacotes a 3Mbps. Logo, a linha de saída consegue mandar apenas um
+				     pacote a cada 1Mbps, mas chegam pacotes a 3Mbps, ou seja, a medida que 1 sai, 3 chegam. Isso gera um enfileramente.
+			
+			-> Alguns métodos para acusar para o TCP que a rede tá ocupada
+				-> Drop-tail
+					-> Pegar o pacote mais recente na fila e descartar. O TCP vai perceber(timeout) e pisar no freio.
+				-> RED(Random Early Detection)
+					-> Perde pacotes antes para sinalizar que pode ocorrer um congestionamento. O TCP vai perceber e dar uma freiada. 	
+	-> ICMP protocol
+		-> Ping	
+	-> Protocolo IP
+				
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
